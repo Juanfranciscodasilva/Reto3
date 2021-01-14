@@ -24,3 +24,7 @@ Route::get('/prueba', function () {
 Route::get('/prueba/{id}/usuario', function ($id) {
     return "Has entrado al usuario atraves de un id ".$id;
 });
+
+Route::get('/random.php', function () {
+    return view('random');
+});
