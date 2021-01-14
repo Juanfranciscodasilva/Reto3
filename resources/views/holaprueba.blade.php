@@ -8,5 +8,6 @@
         <input type="text">
         <input type="submit" value="Enviar">
     </form>
+<a href="random.php">Random.php</a>
 </body>
 </html>
