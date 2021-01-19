@@ -14,17 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('holaprueba');
+    $botonNav = "Iniciar Sesion";
+    return view('principal')->with('botonNav',$botonNav);
 });
 
 Route::get('/prueba', function () {
     return "Hola has entrado a la prueba!";
 });
 
+
+
+Route::get('/login', function (){
+    $botonNav = "Cerrar Sesion";
+   return view('usuario')->with('botonNav',$botonNav);
+});
+
 Route::get('/prueba/{id}/usuario', function ($id) {
     return "Has entrado al usuario atraves de un id ".$id;
 });
 
-Route::get('/random.php', function () {
-    return view('random');
-});
+Route::post('insertar','App\Http\Controllers\insert@store')->name('insertar');
