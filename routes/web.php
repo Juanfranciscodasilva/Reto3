@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Roles;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Logincontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Route::view('/','welcome')->name('welcome');
+
+
+Route::get('login','App\Http\Controllers\Logincontroller@index')->name('login');
+
+Route::post('login','App\Http\Controllers\Logincontroller@login')->name('logged');
+
+
 Route::get('/', function () {
     $botonNav = "Iniciar Sesion";
     return view('principal')->with('botonNav',$botonNav);
@@ -23,11 +33,6 @@ Route::get('/prueba', function () {
 });
 
 
-
-Route::get('/login', function (){
-    $botonNav = "Cerrar Sesion";
-   return view('usuario')->with('botonNav',$botonNav);
-});
 
 Route::get('/prueba/{id}/usuario', function ($id) {
     return "Has entrado al usuario atraves de un id ".$id;
