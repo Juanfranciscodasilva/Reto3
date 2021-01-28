@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+class tablaEstructuras extends Model
 {
     use HasFactory;
-    protected $guarded= [];
-    protected $table = 'personas';
-    public $incrementing = false;
+    protected $table = "estructuras";
+    protected $guarded = [];
     public $timestamps = false;
 }

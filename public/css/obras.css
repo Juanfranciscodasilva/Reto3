@@ -47,6 +47,26 @@
     word-break: break-word;
 }
 
+.botonDescargar{
+    color: white;
+    background-color: forestgreen;
+    border: 0;
+    border-radius: 5px;
+    padding: 3px 10px;
+    word-break: break-word;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.botonDescargar:hover{
+    background-color: darkgreen;
+    color: white;
+}
+
+.botonDescargar:focus{
+    color: white;
+}
+
 @media (min-width: 768px){
 
     .cuerpo-obra {

@@ -26,6 +26,7 @@
 			<div class="wrap-login100">
 
 
+
 				<form method="post" action="{{route('login')}}" class="login100-form validate-form formulario">
 					@csrf
 
@@ -38,7 +39,7 @@
 					</span>
 
 
-					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user dni">
 						<input id="first-name" class="input100" type="text" name="dni" placeholder="DNI/NIf">
 						<span class="focus-input100"></span>
 					</div>
@@ -47,7 +48,7 @@
 						<span class="focus-input100"></span>
 					</div>
                     <div class= "dis-block input100 dis-flex">
-                        <label for="rol" class="txt1  "><p style="font-size: 170%;">Rol:</p></label>
+                        <label for="rol" class="txt1  "><p style="font-size: 170%;">Permiso:</p></label>
                     </div>
 
                     <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
@@ -68,17 +69,34 @@
 					<div class="w-full text-center p-t-27 p-b-239">
 						<span class="txt1 ">
 							Olvidaste tu
+                            <a href="/emailtestform" class="txt2">
+							 Contraseña?
+						</a>|<a href="/registro" class="txt2">
+							 Registrate
+						</a>
 						</span>
 
-						<a href="#" class="txt2">
-							 Contraseña?
-						</a>
-                        <div style="display:{{$dato}}"class="alert alert-danger alert-dismissible fade show" role="alert">
+
+                        <div style="display:{{$dato ?? 'none'}}"class="alert alert-danger alert-dismissible fade show" role="alert">
                             <strong>Error</strong> Usuario  No Encontrado.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
+                       @if($errors->any())
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Error</strong>Tipo de datos invalidos.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                        @isset($registro)
+                            <div class="alert alert-success" role="alert">
+                                Registro realizado exitosamente, inicia sesión
+                            </div>
+                        @endisset
 					</div>
 
 					<div class="w-full text-center">
