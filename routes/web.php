@@ -62,7 +62,7 @@ Route::get('/emailtestform', function () {
 
 Route::post('/contactar', 'App\Http\Controllers\EmailController@contact')->name('contact');//Ruta que esta señalando nuestro formulario
 
-Route::get('reset','App\Http\Controllers\ResetController@inde)')->name('reset');
+Route::get('reset','App\Http\Controllers\ResetController@index')->name('reset');
 
 Route::patch('reset','App\Http\Controllers\ResetController@update')->name('reseteo');
 
