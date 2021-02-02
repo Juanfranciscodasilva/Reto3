@@ -3,7 +3,7 @@
 @include('layout_nav')
 @include('bloque_usuarios')
 @include('bloque_obras')
-@include ('registro-Cuadro')
+@include ('registro-cuadro')
 @include ('bloque_graficas')
 
 @section('head')
