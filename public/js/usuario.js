@@ -22,7 +22,8 @@ var archivoValido = true;
     var placesAutocomplete = places({
         appId: 'pl56I4LZML91',
         apiKey: 'bc9d59afe10c3766fd6fba61355e38be',
-        container: document.querySelector('#direccion')
+        container: document.querySelector('#direccion'),
+        countries:['es']
     });
 
     placesAutocomplete.on('change',function (e){

@@ -1,0 +1,4 @@
+.obra{width: 40%;}
+
+@media(max-width: 991px)
+{.obra{width: 90%;}}

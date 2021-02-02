@@ -14,6 +14,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -126,6 +129,7 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1n3SgH6zRBlym0OpUNOzOXJYO2S" />
@@ -136,12 +140,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../paginaUsuario" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/css" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="ts.external.directory.path" value="C:\Users\2gdaw01\Desktop\laravel\prueba\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public\css" />
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public\js" />
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\resources\views" />
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public\vendor" />
+      <recent name="C:\Users\juan francisco\Desktop\revistapp\public\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public\php" />
+      <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public" />
       <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\public\js" />
       <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\resources\views" />
       <recent name="C:\Users\2gdaw01\Desktop\laravel\prueba\app\Http\Controllers" />
@@ -150,6 +167,9 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="php artisan make:controller random" />
+      <command value="php artisan make:controller PagUsuario" />
+      <command value="npm install -g typescript" />
+      <command value="npm install typescript --save-dev" />
     </option>
   </component>
   <component name="RunManager">
@@ -169,29 +189,57 @@
       <workItem from="1610617393303" duration="4123000" />
       <workItem from="1610696284650" duration="4832000" />
       <workItem from="1610954894101" duration="4812000" />
-      <workItem from="1611042059230" duration="6103000" />
+      <workItem from="1611042059230" duration="11484000" />
+      <workItem from="1611127814974" duration="7059000" />
+      <workItem from="1611215308874" duration="9484000" />
+      <workItem from="1611300622011" duration="16480000" />
+      <workItem from="1611646187823" duration="17288000" />
+      <workItem from="1611732478205" duration="16163000" />
+      <workItem from="1611773208394" duration="5364000" />
+      <workItem from="1611906058492" duration="15045000" />
+      <workItem from="1611936792439" duration="1624000" />
+      <workItem from="1611950449810" duration="2957000" />
+      <workItem from="1611999081535" duration="1844000" />
+      <workItem from="1612011302716" duration="15097000" />
+      <workItem from="1612039580960" duration="7753000" />
+      <workItem from="1612050107873" duration="3549000" />
+      <workItem from="1612088697107" duration="12322000" />
+      <workItem from="1612104036356" duration="659000" />
+      <workItem from="1612106975910" duration="12282000" />
+      <workItem from="1612166110767" duration="13227000" />
+      <workItem from="1612205740536" duration="4515000" />
+      <workItem from="1612252070185" duration="3437000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/public/js/coordinador.js" />
+        <option value="$PROJECT_DIR$/public/js/coordinadoRegistroControl.js" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1267" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1610696329073">
+    <state x="692" y="506" key="FileChooserDialogImpl" timestamp="1612180163722">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="1267" y="304" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1610696329073" />
-    <state x="1317" y="314" key="FileChooserDialogImpl" timestamp="1611042087127">
+    <state x="649" y="473" key="FileChooserDialogImpl/0.0.1920.1040/-1080.-371.1080.1880@0.0.1920.1040" timestamp="1612120009376" />
+    <state x="692" y="506" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1612180163722" />
+    <state x="1371" y="483" key="NewPhpFileDialog" timestamp="1612183736434">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="1317" y="314" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1611042087127" />
-    <state x="1371" y="480" key="NewPhpFileDialog" timestamp="1611049574260">
+    <state x="1371" y="483" key="NewPhpFileDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1612183736434" />
+    <state x="617" y="240" key="SettingsEditor" timestamp="1612166897653">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="1371" y="480" key="NewPhpFileDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1611049574260" />
-    <state x="1193" y="261" width="672" height="677" key="run.anything.popup" timestamp="1610618002613">
-      <screen x="0" y="0" width="2048" height="1112" />
+    <state x="-1039" y="214" key="SettingsEditor/0.0.1920.1040/-1080.-371.1080.1880@-1080.-371.1080.1880" timestamp="1612119645727" />
+    <state x="73" y="324" key="SettingsEditor/0.0.1920.1040/-1080.-371.1080.1880@0.0.1920.1040" timestamp="1612120046325" />
+    <state x="617" y="240" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1612166897653" />
+    <state x="289" y="487" key="jetbrains.nodejs.interpreters-dialog" timestamp="1612120004221">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1193" y="261" width="672" height="677" key="run.anything.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1610618002613" />
+    <state x="289" y="487" key="jetbrains.nodejs.interpreters-dialog/0.0.1920.1040/-1080.-371.1080.1880@0.0.1920.1040" timestamp="1612120004221" />
   </component>
 </project>

@@ -16,10 +16,16 @@
     <link href="css/paginacion.css" rel="stylesheet" />
     <link href="css/usuario.css" rel="stylesheet" />
     <link href="css/obras.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="js/tecnico.js"></script>
+
 @endsection
 
 @section('body')
@@ -95,6 +101,7 @@
                 <h1>Obras Solicitadas</h1>
                 @if(count($obras) > 0)
                 @foreach($obras as $obra)
+                        <script>crearMarcadorMapa({{$obra->latitud}},{{$obra->longitud}})</script>
                     <div class="obra">
                         <div class="titulo-obra d-flex justify-content-between" id="obra{{$obra->id}}" data-toggle="collapse" href="#obraCompleta{{$obra->id}}" aria-controls="obraCompleta{{$obra->id}}">
                             <p><b>ID: {{$obra->id}} </b>&nbsp{{ $obra->direccionString }}</p>
@@ -133,17 +140,26 @@
                     <p class="d-flex justify-content-center"><span style="padding: 5px 10px; background: white; border: solid black 1px; border-radius: 5px;font-weight: bold">No tienes obras solicitadas</span></p>
                 @endif
                 {{ $obras->links('pagination::bootstrap-4') }}
+                <h1>Geolocalización de las obras</h1>
+                <div id="map">
+
+                </div>
+                <script>
+                    inicializarMapa();
+                    establecerMarcadores();
+                </script>
             </div>
         </div>
     </main>
     @yield('footer')
     <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
             crossorigin=""></script>
     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
+    <script src="js/app.js"></script>
     <script src="js/usuario.js"></script>
     <script src="js/principal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     </body>
 @endsection

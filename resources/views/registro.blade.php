@@ -10,6 +10,7 @@
     <!-- Main Style Css -->
     <link rel="stylesheet" href="css/style_registro.css"/>
     <link rel="stylesheet" href="css/style_plantilla_registro.css">
+
 @endsection
 @section('body')
 
@@ -147,5 +148,6 @@
         {{-- <script src="js/bootstrap.bundle.js"></script>--}}
         <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>{{-- script para algolia --}}
         <script src="js/registro.js"></script>
+
     </body>
 @endsection

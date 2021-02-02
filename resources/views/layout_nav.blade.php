@@ -9,10 +9,16 @@
                 {{ $botonNav }}
             </button>
             @else
-                <button class="navbar-toggler navbar-toggler-right d-lg-block" href="#" data-toggle="modal" data-target="#ventana-logout">
-                    {{ $botonNav }}
-                </button>
-
+                <div>
+                    <button class="navbar-toggler navbar-toggler-right d-lg-block" href="#" data-toggle="modal" data-target="#ventana-logout">
+                        {{ $botonNav }}
+                    </button>
+                    @isset($menu)
+                        <button id="topbarToggle" data-toggle="collapse" data-target="#menu_secciones" class="navbar-toggler btn btn-link d-sm-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    @endisset
+                </div>
                 <div class="modal fade" id="ventana-logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog" role="document">

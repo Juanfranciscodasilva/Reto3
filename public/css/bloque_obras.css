@@ -1,0 +1,82 @@
+#buscadorObras{
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid black 1px;
+}
+
+#buscadorObras button{
+    border: solid black 1px;
+    background-color: forestgreen;
+    color: white;
+    padding: 3px 5px;
+    border-left: 0;
+}
+
+#decidirOpcionBusqueda{
+    margin-bottom: 20px;
+}
+
+#izquierda-obras{
+    border-bottom: solid black 1px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+#buscarPorID input{
+    border: solid black 1px;
+}
+
+#buscarPorID a{
+    text-decoration: none;
+    padding: 2px 7px;
+    background-color: forestgreen;
+    color: white;
+    border: solid black 1px;
+}
+
+.apartadoCambiarTecnico h2{
+    margin-bottom: 20px;
+}
+
+.apartadoCambiarTecnico select{
+    padding: 2px 5px;
+}
+
+.apartadoCambiarTecnico button{
+    background-color: forestgreen;
+    border: 0;
+    color: white;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+
+.apartadoCambiarTecnico button:hover{
+    background-color: darkgreen;
+}
+
+@media only screen and (min-width: 992px){
+
+    #izquierda-obras{
+        border: 0;
+        width: 45%;
+    }
+
+    #derecha-obras{
+        width: 50%;
+        padding-left: 5%;
+        border-left: solid black 1px;
+    }
+
+
+}
+
+@media only screen and (min-width: 1200px){
+    .obra{
+        width: 100%;
+    }
+
+    #unicaObra{
+        width: 50%;
+    }
+
+}

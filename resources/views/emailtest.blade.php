@@ -34,6 +34,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/principal.js"></script>
     <script src="js/emailtest.js"></script>
+    <script src="js/app.js"></script>
 
     </body>
 @endsection

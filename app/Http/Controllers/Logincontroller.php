@@ -18,6 +18,9 @@ class Logincontroller extends Controller
     //
     public function index()
     {
+        if (isset($_COOKIE["ventana"])){
+            setcookie("ventana",'',time()-100);
+        }
         $dato = 'none';
         $roles = Roles::get();
         return view('login', compact('roles'), compact('dato'));
@@ -63,7 +66,7 @@ class Logincontroller extends Controller
         switch ($user->rol) {
             case 0:
                 if ($rol == 0) {
-                    return view('welcome');
+                    return redirect('coordinador');
                 } elseif ($rol == 2) {
                     return redirect('usuario');
                 } else {

@@ -22,7 +22,7 @@ class PagTecnico extends Controller
         if ($condicion == 1){
             $obrasBBDD = tablaObras::get()->where('tecnico',$dni)->where('estado',$condicion);
         }else{
-            $obrasBBDD = tablaObras::where('tecnico',$dni)->where('estado', '!=' ,1)->paginate(5);
+            $obrasBBDD = tablaObras::where('tecnico',$dni)->where('estado', '!=' ,1)->where('estado', '!=',5)->paginate(5);
         }
 
 
@@ -108,9 +108,7 @@ class PagTecnico extends Controller
     public function cambiarEstado($estado,$id){
         $obra = tablaObras::find($id);
         $nuevoEstado = $estado+1;
-        if ($estado == 2){
-            $obra->fecha_inicio = date("Y-m-d H:i:s");
-        }else{
+        if ($estado == 3){
             $obra->fecha_fin = date("Y-m-d H:i:s");
         }
         $obra->estado = $nuevoEstado;
@@ -121,6 +119,7 @@ class PagTecnico extends Controller
     public function aceptarObra($id){
         $obra = tablaObras::find($id);
         $obra->estado = 2;
+        $obra->fecha_inicio = date("Y-m-d H:i:s");
         $obra->save();
         $this->enviarCorreo(0,$obra);
         return back();
@@ -132,7 +131,10 @@ class PagTecnico extends Controller
            $this->eliminarArchivo($obra->plano);
         }
         $this->enviarCorreo(1,$obra);
-        tablaObras::where('id',$id)->delete();
+        $obra->estado = 5;
+        $obra->fecha_inicio = date("Y-m-d H:i:s");
+        $obra->fecha_fin = date("Y-m-d H:i:s");
+        $obra->save();
         return back();
     }
 

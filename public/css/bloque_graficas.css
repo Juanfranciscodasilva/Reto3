@@ -1,0 +1,54 @@
+#primer-bloque{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#queso {
+    width: 48%;
+}
+
+#barras{
+    width: 48%;
+}
+
+.apexcharts-zoomin-icon,.apexcharts-zoomout-icon,.apexcharts-reset-icon,.apexcharts-zoom-icon,.apexcharts-pan-icon{
+    display: none;
+}
+
+#buscadorEstadisticas {
+    padding-bottom: 20px;
+    border-bottom: solid black 1px;
+}
+
+#buscadorEstadisticas button{
+    border: solid black 1px;
+    border-left: 0;
+    background-color: forestgreen;
+    color: white;
+    margin-right: 5px;
+}
+
+#buscadorEstadisticas button{
+    background-color: darkgreen;
+}
+
+.h1-graficas{
+    margin-top: 20px;
+}
+
+@media (max-width: 768px){
+    #primer-bloque {
+        flex-direction: column;
+    }
+
+    #queso,#barras{
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    #queso{
+        width: 100%;
+    }
+}

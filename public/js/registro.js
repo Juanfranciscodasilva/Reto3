@@ -1,4 +1,8 @@
+
+var evento;
+
 $(document).ready(function(){
+
     var placesAutocomplete = places({
         appId: 'pl56I4LZML91',
         apiKey: 'bc9d59afe10c3766fd6fba61355e38be',
@@ -10,6 +14,10 @@ $(document).ready(function(){
         console.log(evento);
         completarDireccion(evento);
     });
+
+
+
+
 });
 function completarDireccion(evento){
     $('#calle').val(evento.name);

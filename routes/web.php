@@ -20,29 +20,20 @@ use App\Models\tablaTiposObra;
 |
 */
 
-//Route::view('/','welcome')->name('welcome');
 
+//RUTAS LOGIN
 
 Route::get('login','App\Http\Controllers\Logincontroller@index')->name('login');
 
 Route::post('login','App\Http\Controllers\Logincontroller@login')->name('logged');
 
-Route::get('/emailtestform', function () {
-    $botonNav = "INICIAR SESION";
-    $dato = "black";
-    return view('emailtest',compact('dato'))->with('botonNav',$botonNav);
-})->name('emailtestform'); //Esta ruta la ponemos en la raiz para que nada mas ejecutar nuestra aplicación aparezca nuestro formulario
+//RUTAS USUARIO
 
-Route::post('/contactar', 'App\Http\Controllers\EmailController@contact')->name('contact');//Ruta que esta señalando nuestro formulario
+Route::get('/usuario', 'App\Http\Controllers\PagUsuario@entrar');
 
 Route::post('usuario', 'App\Http\Controllers\PagUsuario@solicitarObra')->name('usuario.solicitarObra');
 
-Route::get('/', function () {
-    $botonNav = "INICIAR SESION";
-    return view('principal')->with('botonNav',$botonNav);
-});
-
-Route::get('/usuario', 'App\Http\Controllers\PagUsuario@entrar');
+//RUTAS TECNICO
 
 Route::get('/tecnico', function (){
     session_start();
@@ -55,21 +46,23 @@ Route::get('/tecnico', function (){
     return view("tecnico")->with('botonNav', $botonNav)->with("obrasSolicitadas",$obrasSolicitadas)->with("obrasAceptadas",$obrasAceptadas);
 });
 
-Route::get('/public/{archivo}', function ($archivo){
-    return Storage::download("planos/".$archivo);
-});
-
 Route::get('/tecnico/{estado}/{id}', 'App\Http\Controllers\PagTecnico@cambiarEstado');
 
 Route::get('/tecnico/obra/aceptar/{id}', 'App\Http\Controllers\PagTecnico@aceptarObra');
 
 Route::get('/tecnico/obra/denegar/{id}', 'App\Http\Controllers\PagTecnico@denegarObra');
 
-Route::view('/registro','registro')->name('registro');
+//RUTAS CAMBIAR CONTRASEÑA
 
-Route::post('registro','App\Http\Controllers\RegistroController@store');
+Route::get('/emailtestform', function () {
+    $botonNav = "INICIAR SESION";
+    $dato = "black";
+    return view('emailtest',compact('dato'))->with('botonNav',$botonNav);
+})->name('emailtestform'); //Esta ruta la ponemos en la raiz para que nada mas ejecutar nuestra aplicación aparezca nuestro formulario
 
-Route::get('reset','App\Http\Controllers\ResetController@index')->name('reset');
+Route::post('/contactar', 'App\Http\Controllers\EmailController@contact')->name('contact');//Ruta que esta señalando nuestro formulario
+
+Route::get('reset','App\Http\Controllers\ResetController@inde)')->name('reset');
 
 Route::patch('reset','App\Http\Controllers\ResetController@update')->name('reseteo');
 
@@ -77,3 +70,36 @@ Route::get('confimacion',function (){
     $botonNav = "INICIAR SESION";
     return view('confirmacion')->with('botonNav',$botonNav);
 })->name('confirmacion');
+
+//RUTAS PAGINA PRINCIPAL
+
+Route::get('/', function () {
+    $botonNav = "INICIAR SESION";
+    return view('principal')->with('botonNav',$botonNav);
+});
+
+//RUTAS DE REGISTRO
+
+Route::view('/registro','registro')->name('registro');
+
+Route::post('registro','App\Http\Controllers\RegistroController@store');
+
+
+//RUTA PARA DESCARGAR ARCHIVOS
+
+Route::get('/public/{archivo}', function ($archivo){
+    return Storage::download("planos/".$archivo);
+});
+
+//RUTAS COORDINADOR
+
+Route::get('coordinador','App\Http\Controllers\PagCoordinador@entrar');
+
+Route::post('envio','App\Http\Controllers\PagCoordinador@store')->name('envio');
+
+Route::post('coordinador','App\Http\Controllers\PagCoordinador@decidirOpcion')->name("buscadorCoordinador");
+
+Route::get('/coordinador','App\Http\Controllers\PagCoordinador@todosLosUsuarios')->name("todosLosUsuarios");
+
+
+

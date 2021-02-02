@@ -155,7 +155,11 @@ textarea{
     background-color: darkgreen;
 }
 
-
+#map{
+    width: 100%;
+    height: 300px;
+    border: solid black 1px;
+}
 
 
 
