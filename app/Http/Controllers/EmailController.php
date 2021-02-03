@@ -28,7 +28,7 @@ class EmailController extends Controller
         } else {
 
             Mail::send('email', $request->all(), function ($msj) use ($subject, $for) {
-                $msj->from("correoEmisor@gmail.com", "ivan");
+                $msj->from("noreplyvitoriagasteiz@gmail.com", "Ayuntamiento Vitoria-Gasteiz");
                 $msj->subject($subject);
                 $msj->to($for);
             });
