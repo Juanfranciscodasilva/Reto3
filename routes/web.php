@@ -39,6 +39,10 @@ Route::get('/tecnico', function (){
     session_start();
     if (!isset($_SESSION["user"])){
         return redirect("login");
+    }else{
+        if($_SESSION["user"]["rol"]!=1){
+            return back();
+        }
     }
     $obrasSolicitadas = app(PagTecnico::class)->extraerObras(1);
     $obrasAceptadas = app(PagTecnico::class)->extraerObras(2);
@@ -52,6 +56,8 @@ Route::get('/tecnico/obra/aceptar/{id}', 'App\Http\Controllers\PagTecnico@acepta
 
 Route::get('/tecnico/obra/denegar/{id}', 'App\Http\Controllers\PagTecnico@denegarObra');
 
+Route::post('/tecnico','App\Http\Controllers\PagTecnico@comentarios')->name("comentarios");
+
 //RUTAS CAMBIAR CONTRASEÑA
 
 Route::get('/emailtestform', function () {
@@ -62,7 +68,7 @@ Route::get('/emailtestform', function () {
 
 Route::post('/contactar', 'App\Http\Controllers\EmailController@contact')->name('contact');//Ruta que esta señalando nuestro formulario
 
-Route::get('reset','App\Http\Controllers\ResetController@inde)')->name('reset');
+Route::get('reset','App\Http\Controllers\ResetController@index')->name('reset');
 
 Route::patch('reset','App\Http\Controllers\ResetController@update')->name('reseteo');
 
@@ -73,10 +79,7 @@ Route::get('confimacion',function (){
 
 //RUTAS PAGINA PRINCIPAL
 
-Route::get('/', function () {
-    $botonNav = "INICIAR SESION";
-    return view('principal')->with('botonNav',$botonNav);
-});
+Route::get('/', 'App\Http\Controllers\PagPrincipal@entrar');
 
 //RUTAS DE REGISTRO
 
@@ -88,18 +91,16 @@ Route::post('registro','App\Http\Controllers\RegistroController@store');
 //RUTA PARA DESCARGAR ARCHIVOS
 
 Route::get('/public/{archivo}', function ($archivo){
-    return Storage::download("planos/".$archivo);
+    return Storage::download("planos/".base64_decode($archivo));
 });
 
 //RUTAS COORDINADOR
 
-Route::get('coordinador','App\Http\Controllers\PagCoordinador@entrar');
+Route::get('coordinador','App\Http\Controllers\PagCoordinador@entrar')->name("todosLosUsuarios");
 
 Route::post('envio','App\Http\Controllers\PagCoordinador@store')->name('envio');
 
 Route::post('coordinador','App\Http\Controllers\PagCoordinador@decidirOpcion')->name("buscadorCoordinador");
-
-Route::get('/coordinador','App\Http\Controllers\PagCoordinador@todosLosUsuarios')->name("todosLosUsuarios");
 
 
 

@@ -28,8 +28,10 @@ class ResetController extends Controller
 
           $user = Persona::get()->where('email',$mail )->first();
 
-         $user->update([
-                'password'=> request('pass1')
+        $passEncriptada = password_hash(request('pass1'),PASSWORD_DEFAULT);
+
+        $user->update([
+            'password'=> $passEncriptada
         ]);
 
 

@@ -16,6 +16,15 @@ use phpDocumentor\Reflection\Utils;
 class PagCoordinador extends Controller
 {
     public function entrar(){
+        session_start();
+        if (!isset($_SESSION["user"])){
+            return redirect("login");
+        }else{
+            if($_SESSION["user"]["rol"]!=0){
+                return back();
+            }
+        }
+
         //DATOS PARA LA VENTANA DE REGISTRO
 
         $roles = Roles::get();
@@ -365,6 +374,7 @@ class PagCoordinador extends Controller
         $dni = request('dni');
         //antes de hacer el insert debemos verificar si ya existe en la tabla con el dni
         $persona = Persona::find($dni);
+        $passEncriptada = password_hash(request('pass'),PASSWORD_DEFAULT);
         if($persona==null){
             //si no existe añadimos persona
             $persona = Persona::create([
@@ -377,7 +387,7 @@ class PagCoordinador extends Controller
                 'email'=>request('email'),
                 'telefono'=>request('tel'),
                 'rol'=>request('rol'),
-                'password'=>request('pass')
+                'password'=>$passEncriptada
             ]);
             //redirigir al login y mostrar mensaje de registro exitoso
 
@@ -414,10 +424,14 @@ class PagCoordinador extends Controller
 
         $id = $request->idObra;
         $obra = tablaObras::find($id);
-        $obras = [$obra];
-        $obraCompleta = $this->modificarDatosCompletosObras($obras);
+        $obraCompleta = [];
+        if($obra != null){
+            $obras = [$obra];
+            $obraCompleta = $this->modificarDatosCompletosObras($obras);
+        }
+
         $datosObras = [
-            "unica" => $obraCompleta[0]
+            "unica" => $obraCompleta
         ];
 
         //DATOS PARA LA VENTANA DE REGISTRO
@@ -440,32 +454,6 @@ class PagCoordinador extends Controller
             ->with("usuarios",$usuarios)
             ->with("menu",true);
 
-    }
-
-    public function todosLosUsuarios(){
-        //DATOS PARA LA VENTANA DE REGISTRO
-
-        $roles = Roles::get();
-
-        //DATOS PARA LA VENTANA DE ESTADISTICAS
-
-        $datosGraficas = $this->datosVentanaEstadisticas(01,2021);
-
-        //DATOS PARA LA VENTANA DE OBRAS
-
-        $datosObras = $this->obtenerObrasCoordinador();
-
-        //DATOS PARA LA VENTANA DE USUARIOS
-
-        $usuarios = $this->obtenerUsuarios();
-
-        return view("coordinador")
-            ->with("botonNav","CERRAR SESION")
-            ->with("datosRegistro",$roles)
-            ->with("datosGraficas",$datosGraficas)
-            ->with("datosObras",$datosObras)
-            ->with("usuarios",$usuarios)
-            ->with("menu",true);
     }
 
     public function estadisticasPorMes($request){

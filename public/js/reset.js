@@ -15,7 +15,7 @@ function validar() {
     else {
         if ($('#first-name').val() == $('#pass2').val()) {
             var cadena = $('#first-name').val();
-            var patt = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\\[-`{-~]).{6,64}$');
+            var patt = new RegExp('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$');
             if (patt.test(cadena)) {
                 return true;
             }

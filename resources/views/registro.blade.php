@@ -1,12 +1,7 @@
 @extends('layout')
 @section('head')
-    <meta charset="utf-8">
-    <title>Form-v10 by Colorlib</title>
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <!-- Font-->
     <link rel="stylesheet" type="text/css" href="css/montserrat-font.css">
-    <link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
     <!-- Main Style Css -->
     <link rel="stylesheet" href="css/style_registro.css"/>
     <link rel="stylesheet" href="css/style_plantilla_registro.css">
@@ -96,6 +91,10 @@
                         <div class="form-row">
                             <input type="text" name="direccion" value="{{old('direccion')}}" id="direccion" class="form-control" placeholder="Calle">
                             {!! $errors->first('direccion',
+                               '<div class="mensaje_error">
+                                   :message
+                               </div>')!!}
+                            {!! $errors->first('calle',
                                '<div class="mensaje_error">
                                    :message
                                </div>')!!}

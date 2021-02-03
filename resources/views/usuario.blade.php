@@ -3,13 +3,6 @@
 @include('layout_footer')
 
 @section('head')
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Ayuntamiento Vitoria-Gasteiz</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/nav.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
@@ -101,7 +94,7 @@
                 <h1>Obras Solicitadas</h1>
                 @if(count($obras) > 0)
                 @foreach($obras as $obra)
-                        <script>crearMarcadorMapa({{$obra->latitud}},{{$obra->longitud}})</script>
+                        <script>crearMarcadorMapa({{$obra->latitud}},{{$obra->longitud}},"{{$obra->direccionString}}")</script>
                     <div class="obra">
                         <div class="titulo-obra d-flex justify-content-between" id="obra{{$obra->id}}" data-toggle="collapse" href="#obraCompleta{{$obra->id}}" aria-controls="obraCompleta{{$obra->id}}">
                             <p><b>ID: {{$obra->id}} </b>&nbsp{{ $obra->direccionString }}</p>
@@ -133,6 +126,11 @@
                             <div>
                                 <p><b>Descripción: </b>{{$obra->descripcion}}</p>
                             </div>
+                            @if($obra->plano != null)
+                                <div class="d-flex justify-content-center">
+                                    <a href="/public/{{base64_encode($obra->plano)}}" class="botonDescargar">Descargar plano</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @endforeach

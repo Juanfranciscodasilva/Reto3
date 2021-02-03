@@ -1,5 +1,16 @@
 var arrayerrores = [];
-var evento;
+var evento = "";
+(function () {
+    var placesAutocomplete = places({
+        appId: 'pl56I4LZML91',
+        apiKey: 'bc9d59afe10c3766fd6fba61355e38be',
+        container: document.querySelector('#direccion'),
+        countries: ['es']
+    });
+    placesAutocomplete.on('change', function (e) {
+        evento = e.suggestion;
+    });
+})();
 function validaciones() {
     arrayerrores = [];
     validarApellido();
@@ -13,6 +24,7 @@ function validaciones() {
     validarDni();
     validarFecha();
     validarEmail();
+    validarDireccion();
     {
         $.ajax({
             url: "php/validacionesRegistro.php",
@@ -203,7 +215,7 @@ function validarNumeroPortal() {
         }
         else {
             if (patron.test(np)) {
-                $('#piso').css('border', '1px solid green');
+                $('#numero').css('border', '1px solid green');
                 return true;
             }
             else {
@@ -302,5 +314,14 @@ function validarVacio(valorCampo) {
     }
     else {
         return true;
+    }
+}
+function validarDireccion() {
+    if (evento == "") {
+        $('#direccion').css('border', '1px solid red');
+        arrayerrores.push('#direccion');
+    }
+    else {
+        $('#direccion').css('border', '1px solid green');
     }
 }

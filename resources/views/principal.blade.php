@@ -26,11 +26,6 @@
 @endsection
 
 @section('head')
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content="Grupo 1" />
-    <title>Ayuntamiento Vitoria-Gasteiz</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <!-- Google fonts-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->

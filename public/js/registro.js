@@ -25,15 +25,3 @@ function completarDireccion(evento){
     $('#latitud').val(evento.latlng.lat);
     $('#longitud').val(evento.latlng.lng);
 }
-function validar(){
-    //$('#dni').val()
-    //confirmación contraseña:
-    let pass = $('#pass').val();
-    let pass2 = $('#pass2').val();
-    if(pass==pass2){
-        return true;
-    }
-    else{
-        return false;
-    }
-}

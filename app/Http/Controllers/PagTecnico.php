@@ -8,6 +8,7 @@ use App\Models\tablaEstados;
 use App\Models\tablaEstructuras;
 use App\Models\tablaObras;
 use App\Models\tablaTiposObra;
+use App\Models\Comentarios;
 use Faker\Provider\Person;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -101,6 +102,8 @@ class PagTecnico extends Controller
             if ($obraBBDD->fecha_fin == null){
                 $obraBBDD->fecha_fin = "No acabada";
             }
+            $comentarios = Comentarios::get()->where('obra',$obraBBDD->id);
+            $obraBBDD->coments = $comentarios;
         }
         return $obrasBBDD;
     }
@@ -163,5 +166,19 @@ class PagTecnico extends Controller
 
     public function eliminarArchivo($archivo){
         Storage::delete("planos/".$archivo);
+    }
+
+    public function comentarios()
+    {
+        session_start();
+        Comentarios::create([
+            'texto' => request('texto'),
+            'fecha_inicio' => date("Y-m-d H:i:s"),
+            'obra' =>  request('idObra'),
+            'autor' => $_SESSION["user"]->nombre." ".$_SESSION["user"]->apellidos
+        ]);
+
+        return back();
+
     }
 }

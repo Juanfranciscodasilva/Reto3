@@ -18,6 +18,9 @@ class Logincontroller extends Controller
     //
     public function index()
     {
+
+        session_start();
+        session_destroy();
         if (isset($_COOKIE["ventana"])){
             setcookie("ventana",'',time()-100);
         }
@@ -46,7 +49,7 @@ class Logincontroller extends Controller
         $dni = request('dni');
         $pass = request('pass');
         $rol = request('rol');
-        $user = Persona::get()->where('id', $dni)->where('password', $pass)->first();
+        $user = Persona::get()->where('id', $dni)->first();
 
 
         $roles = Roles::get();
@@ -57,41 +60,40 @@ class Logincontroller extends Controller
 
             return view('login', compact('roles'), compact('dato'));
         }
+        if (password_verify($pass,$user->password) ){
+            $_SESSION['user'] = $user;
+            switch ($user->rol) {
+                case 0:
+                    if ($rol == 0) {
+                        return redirect('coordinador');
+                    } elseif ($rol == 2) {
+                        return redirect('usuario');
+                    } else {
+                        return view('login', compact('roles'), compact('dato'));
+                    }
 
-        $_SESSION['user'] = $user;
+                case 1:
+                    if ($rol == 1) {
+                        return redirect('tecnico');
+                    } elseif ($rol == 2) {
+                        return redirect('usuario');
+                    } else {
 
+                        return view('login', compact('roles'), compact('dato'));
+                    }
+                    break;
+                case 2:
+                    if ($rol == 2) {
+                        return redirect('usuario');
+                    } else {
 
-
-
-        switch ($user->rol) {
-            case 0:
-                if ($rol == 0) {
-                    return redirect('coordinador');
-                } elseif ($rol == 2) {
-                    return redirect('usuario');
-                } else {
-                    return view('login', compact('roles'), compact('dato'));
-                }
-
-            case 1:
-                if ($rol == 1) {
-                    return redirect('tecnico');
-                } elseif ($rol == 2) {
-                    return redirect('usuario');
-                } else {
-
-                    return view('login', compact('roles'), compact('dato'));
-                }
-                break;
-            case 2:
-                if ($rol == 2) {
-                    return redirect('usuario');
-                } else {
-
-                    return view('login', compact('roles'), compact('dato'));
-                }
+                        return view('login', compact('roles'), compact('dato'));
+                    }
+            }
+        }else{
+            session_destroy();
+            return view('login', compact('roles'), compact('dato'));
         }
-
     }
 
 }

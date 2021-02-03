@@ -3,13 +3,6 @@
 @include('layout_footer')
 
 @section('head')
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Ayuntamiento Vitoria-Gasteiz</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/nav.css" rel="stylesheet" />
     <link href="css/footer.css" rel="stylesheet" />
@@ -70,7 +63,7 @@
                                 </div>
                                 @if($obra->plano != null)
                                     <div class="d-flex justify-content-center">
-                                        <a href="/public/{{$obra->plano}}" class="botonDescargar">Descargar plano</a>
+                                        <a href="/public/{{base64_encode($obra->plano)}}" class="botonDescargar">Descargar plano</a>
                                     </div>
                                 @endif
                                 <div class="d-flex justify-content-between flex-wrap" style="margin-top: 40px">
@@ -107,7 +100,7 @@
                 <h1 id="h1Formulario2">Obras a cargo</h1>
                 @if(count($obrasAceptadas) != 0)
                     @foreach($obrasAceptadas as $obra)
-                        <script>crearMarcadorMapa({{$obra->latitud}},{{$obra->longitud}})</script>
+                        <script>crearMarcadorMapa({{$obra->latitud}},{{$obra->longitud}},"{{$obra->direccionString}}")</script>
                         <div class="obra">
                             <div class="titulo-obra d-flex justify-content-between" id="obra{{$obra->id}}" data-toggle="collapse" href="#obraCompleta{{$obra->id}}" aria-controls="obraCompleta{{$obra->id}}">
                                 <p><b>ID: {{$obra->id}} </b>&nbsp{{ $obra->direccionString }}</p>
@@ -141,7 +134,7 @@
                                 </div>
                                 @if($obra->plano != null)
                                     <div class="d-flex justify-content-between flex-wrap">
-                                        <a href="/public/{{$obra->plano}}" class="botonDescargar">Descargar plano</a>
+                                        <a href="/public/{{base64_encode($obra->plano)}}" class="botonDescargar">Descargar plano</a>
                                         @if($obra->estado != 4)
                                             <a href="tecnico/{{$obra->estado."/".$obra->id}}" class="botonCambiarEstado">{{$obra->mensajeCambiarEstado ?? "Avanzar estado"}}</a>
                                         @endif
@@ -152,6 +145,45 @@
                                             <a href="tecnico/{{$obra->estado."/".$obra->id}}" class="botonCambiarEstado">{{$obra->mensajeCambiarEstado ?? "Avanzar estado"}}</a>
                                         </div>
                                     @endif
+                                @endif
+                                @if(count($obra->coments) > 0)
+                                <div class="w-100 apartado-comentarios">
+                                    <h3 data-toggle="collapse" href="#comentariosObra{{$obra->id}}" aria-controls="comentariosObra{{$obra->id}}" onclick="cambiarIconoComentarios({{$obra->id}})">Comentarios&nbsp<span class="fa fa-chevron-down" id="iconoComentario{{$obra->id}}"></span></h3>
+                                    <div id="comentariosObra{{$obra->id}}" class="collapse">
+                                        @foreach($obra->coments as $coment)
+                                            <div class="w-100 comentario">
+                                                <div class="titulo-comentario d-flex justify-content-start flex-wrap">
+                                                    <p>{{$coment->autor}},&nbsp</p>
+                                                    <p>{{$coment->fecha_inicio}}</p>
+                                                </div>
+
+                                                <p class="cuerpo-comentario">{{$coment->texto}}</p>
+                                            </div>
+                                        @endforeach
+                                        <div class="formComentario">
+                                            <form method="post" action="{{route('comentarios')}}" class="d-flex flex-column align-items-center">
+                                                @csrf
+                                                <h4>Publicar un comentario</h4>
+                                                <input type="hidden" name="idObra" value="{{$obra->id}}">
+                                                <textarea name="texto" placeholder="Comentario..." required></textarea>
+                                                <button type="submit">Guardar comentario</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                    <div class="w-100 apartado-comentarios">
+                                        <div class="formComentario">
+                                            <form method="post" action="{{route('comentarios')}}" class="d-flex flex-column align-items-center">
+                                                @csrf
+                                                <h4>Publicar un comentario</h4>
+                                                <input type="hidden" name="idObra" value="{{$obra->id}}">
+                                                <textarea name="texto" placeholder="Comentario..." required></textarea>
+                                                <button type="submit">Guardar comentario</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 @endif
                             </div>
                         </div>

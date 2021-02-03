@@ -7,13 +7,6 @@
 @include ('bloque_graficas')
 
 @section('head')
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin 2 - Blank</title>
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -26,12 +19,19 @@
     <link href="css/bloque_graficas.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style_registro.css"/>
     <link rel="stylesheet" href="css/style_plantilla_registro.css">
+    <link rel="stylesheet" href="css/bloque_registro.css"/>
     <!--link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/coordinador.css">
     <link rel="stylesheet" href="css/apexchart.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
     <script type="text/javascript" src="js/apexcharts.min.js"></script>
-
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""></script>
+    <script src="js/tecnico.js"></script>
 
 
 @endsection

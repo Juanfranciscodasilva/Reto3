@@ -19,17 +19,20 @@ class RegistroController extends Controller
             'pais_nacimiento'=>'required|regex:/^[A-zÀ-ÿ]+([ ]+[A-zÀ-ÿ]+)*$/i',
             'tel'=>'required|min:9',
             'pass'=>'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/',
-            'pass2'=>'required',
+            'pass2'=>'required|same:pass',
             'direccion'=>'required',
             'numero'=>'required|regex:/[1-9]+[0-9]*/',
-            'piso'=>'required|regex:/^[0-9]+[\- ]?[a-zA-Z]+$/',
+            'piso'=>'required|regex:/^[0-9]+[\- ]?[a-zA-Z]{1,3}$/',
             'email'=>'required|email',
-            'condiciones'=>'required'
+            'condiciones'=>'required',
+            'calle'=>'required'
         ], [
             'apellidos.regex'=>'Formato inválido: sólo puede contener letras',
             'fnacimiento.required'=>'La fecha de nacimiento es obligatoria',
             'pass.regex'=>'Debe contener mínimo 8 caracteres: al menos una mayúscula, una minúscula y un número',
-            'pass2.required'=>'Confirmación de contraseña obligatoria'
+            'pass2.required'=>'Confirmación de contraseña obligatoria',
+            'pass2.same'=>'las contraseñas no coinciden',
+            'calle.required'=>'Debes seleccionar una de las sugerencias'
         ]);
 
         //acceder a los datos de dirección
@@ -60,6 +63,7 @@ class RegistroController extends Controller
         $dni = request('dni');
         //antes de hacer el insert debemos verificar si ya existe en la tabla con el dni
         $persona = Persona::find($dni);
+        $passEncriptada = password_hash(request('pass'),PASSWORD_DEFAULT);
         if($persona==null){
             //si no existe añadimos persona
             $persona = Persona::create([
@@ -72,7 +76,7 @@ class RegistroController extends Controller
                 'email'=>request('email'),
                 'telefono'=>request('tel'),
                 'rol'=>2, //por defecto rol de usuario normal.
-                'password'=>request('pass')
+                'password'=>$passEncriptada
             ]);
             //redirigir al login y mostrar mensaje de registro exitoso
             $registro = true;

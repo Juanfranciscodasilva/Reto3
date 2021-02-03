@@ -20,7 +20,7 @@
                         <input style="border-color:{{$dato}};" type="email" class="form-control m-b-3" id="exampleInputEmail1" aria-describedby="emailHelp"
                                value="{{ old ('email')}}" name="email">
                         <input hidden type="text" name="valor" value="1">
-                        <div id="emailHelp" class="form-text align-self-center" >No copartas tu correo con nadie.</div>
+                        <div id="emailHelp" class="form-text align-self-center" >No compartas tu correo con nadie.</div>
                     </div>
 
                     <button id="btn"type="submit" class="btn col-md-8 col-12 p-3  sm btn-success align-self-center">Enviar</button>
@@ -40,11 +40,6 @@
 @endsection
 
 @section('head')
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="author" content="Grupo 1" />
-    <title>Ayuntamiento Vitoria-Gasteiz</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
     <!-- Google fonts-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Core theme CSS (includes Bootstrap)-->

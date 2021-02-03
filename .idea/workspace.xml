@@ -16,8 +16,8 @@
       <list>
         <option value="Vue Single File Component" />
         <option value="TypeScript File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -208,7 +208,8 @@
       <workItem from="1612106975910" duration="12282000" />
       <workItem from="1612166110767" duration="13227000" />
       <workItem from="1612205740536" duration="4515000" />
-      <workItem from="1612252070185" duration="3437000" />
+      <workItem from="1612252070185" duration="13617000" />
+      <workItem from="1612337878054" duration="12149000" />
     </task>
     <servers />
   </component>
@@ -241,5 +242,20 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="289" y="487" key="jetbrains.nodejs.interpreters-dialog/0.0.1920.1040/-1080.-371.1080.1880@0.0.1920.1040" timestamp="1612120004221" />
+    <state x="1198" y="247" width="672" height="678" key="search.everywhere.popup" timestamp="1612337981498">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="1198" y="247" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1612337981498" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/bloque_obras.blade.php</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
