@@ -2740,5 +2740,13 @@ label {
 /*# sourceMappingURL=style.css.map */
 
 .page-content{
- height: 100%;   
+ background-color: white;  
+}
+
+.form-v10-content .form-detail .form-left{
+    box-shadow: -1px -1px 20px -5px black;   
+}
+
+.form-v10-content .form-detail .form-right{
+    box-shadow: 1px 1px 20px -5px black;  
 }
