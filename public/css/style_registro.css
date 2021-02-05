@@ -2741,6 +2741,7 @@ label {
 
 .page-content{
  background: none;  
+    background-image: none;
 }
 
 .form-v10-content .form-detail .form-left{
