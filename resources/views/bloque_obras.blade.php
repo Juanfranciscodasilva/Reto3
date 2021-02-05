@@ -211,13 +211,6 @@
                             @endif
                         </div>
                     </div>
-                    <div id="map">
-
-                    </div>
-                    <script>
-                        inicializarMapa();
-                        establecerMarcadores();
-                    </script>
                 </div>
                 @else
                     <div class="w-100">
