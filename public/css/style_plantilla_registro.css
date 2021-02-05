@@ -17,9 +17,6 @@ body {
 	-ms-align-items: center;
 	-moz-align-items: center;
 	-webkit-align-items: center;
-	background-image: -moz-linear-gradient( 136deg, var(--bs-white) 0%, #c8cecc 100%);
-	background-image: -ms-linear-gradient( 136deg, var(--bs-white) 0%, #c8cecc 100%);
-    background-image: -webkit-linear-gradient( 136deg, var(--bs-white) 0%, #c8cecc 100%);
 }
 .form-v10-content  {
 	background: #fff;
